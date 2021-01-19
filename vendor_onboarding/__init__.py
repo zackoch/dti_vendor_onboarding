@@ -1,6 +1,9 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import dotenv
+
+dotenv.load_dotenv()
 
 app = Flask(__name__, static_folder='static-files')
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
