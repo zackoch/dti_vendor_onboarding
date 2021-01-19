@@ -15,7 +15,7 @@ headers = {
 }
 
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/contractor", methods=['GET', 'POST'])
 def vendor_form():
     form = ContractorForm()
     if form.validate_on_submit():
