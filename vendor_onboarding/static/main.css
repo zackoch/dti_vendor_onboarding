@@ -1,0 +1,26 @@
+#navbar {
+    background-color: #43a30c;
+}
+
+#header {
+    background-color: #333333;
+}
+
+.contractor-section-lead {
+    color: #5eb041;
+    font-weight: 400;
+}
+.contractor-form-section-heading {
+    color: #5eb041;
+    font-weight: 400;
+}
+
+.form-check-inline {
+  width: 250px;
+}
+
+.required-field::after {
+    content: "*";
+    color: red;
+    margin-left:2px
+}

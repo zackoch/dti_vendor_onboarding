@@ -1,0 +1,703 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-3">
+    <div class="">
+        <h3 class="lead contractor-section-lead">
+            Datatrend has experience as a technical extension of the largest enterprises in the field. With our network
+            of certified technicians, we are able to perform technology deployments across the world. Become a local
+            resource and join our team of contractors.
+        </h3>
+    </div>
+    <div class="">
+        <h5 class="d-block lead">Datatrend is looking for assets in your area for:</h5>
+        <ul>
+            <li>Voice & Data Cabling</li>
+            <li>Fiber Cabling & Termination</li>
+            <li>IoT Deployments</li>
+            <li>Point of Sale Installation</li>
+            <li>Electrical</li>
+        </ul>
+    </div>
+    <div class="">
+        <h3 class="lead contractor-section-lead">
+            If you would like to become an approved Datatrend contractor, please fill out the application below.
+        </h3>
+        <hr class="solid">
+    </div>
+    <div class="">
+        <form action="" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+            <!--mailing address-->
+            <div class="container">
+                <h3 class="contractor-form-section-heading">Mailing Address</h3>
+                <div class="form-group">
+                    {{ form.company_name.label(class='form-control-label text-muted required-field') }}
+                    {% if form.company_name.errors %}
+                    {{ form.company_name(class='form-control form-control-md is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.company_name.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.company_name(class='form-control form-control-md') }}
+                    {% endif %}
+
+                    {{ form.street_address.label(class='form-control-label text-muted') }}
+                    {{ form.street_address(class='form-control form-control-md') }}
+
+
+                    {{ form.street_address_2.label(class='form-control-label text-muted') }}
+                    {{ form.street_address_2(class='form-control form-control-md') }}
+
+                    {{ form.city.label(class='form-control-label text-muted') }}
+                    {{ form.city(class='form-control form-control-md') }}
+
+                    {{ form.state.label(class='form-control-label text-muted') }}
+                    {{ form.state(class='form-control form-control-md') }}
+
+                    {{ form.zip.label(class='form-control-label text-muted') }}
+                    {{ form.zip(class='form-control form-control-md') }}
+
+                    {{ form.phone.label(class='form-control-label text-muted') }}
+                    {{ form.phone(class='form-control form-control-md') }}
+
+                    {{ form.website.label(class='form-control-label text-muted') }}
+                    {{ form.website(class='form-control form-control-md') }}
+                </div>
+            </div>
+
+            <div class="container">
+                <!--shipping address-->
+                <h3 class="contractor-form-section-heading py-2">Shipping Address</h3>
+                <div class="form-group">
+                    {{ form.shipping_address_different.label(class='form-control-label text-muted') }}
+                    {{ form.shipping_address_different(class='form-control form-control-md',
+                    id='shipping_address') }}
+                </div>
+                <div class="form-group" id="shipping_address_different">
+                    {{ form.shipping_address.label(class='form-control-label text-muted') }}
+                    {{ form.shipping_address(class='form-control form-control-md', id='shipping_address_input') }}
+
+                    {{ form.shipping_address_2.label(class='form-control-label text-muted') }}
+                    {{ form.shipping_address_2(class='form-control form-control-md') }}
+
+                    {{ form.shipping_city.label(class='form-control-label text-muted') }}
+                    {{ form.shipping_city(class='form-control form-control-md') }}
+
+                    {{ form.shipping_state.label(class='form-control-label text-muted') }}
+                    {{ form.shipping_state(class='form-control form-control-md') }}
+
+                    {{ form.shipping_zip.label(class='form-control-label text-muted') }}
+                    {{ form.shipping_zip(class='form-control form-control-md') }}
+                </div>
+            </div>
+            <!--billing address-->
+
+            <div class="container">
+                <h3 class="contractor-form-section-heading">Billing Address</h3>
+                <div class="form-group">
+                    {{ form.billing_address_different.label(class='form-control-label text-muted') }}
+                    {{ form.billing_address_different(class='form-control form-control-md', id='billing_address') }}
+                </div>
+                <div class="form-group" id="billing_address_different">
+                    {{ form.billing_address.label(class='form-control-label text-muted') }}
+                    {{ form.billing_address(class='form-control form-control-md', id='billing_address_input') }}
+
+                    {{ form.billing_address_2.label(class='form-control-label text-muted') }}
+                    {{ form.billing_address_2(class='form-control form-control-md') }}
+
+                    {{ form.billing_city.label(class='form-control-label text-muted') }}
+                    {{ form.billing_city(class='form-control form-control-md') }}
+
+                    {{ form.billing_state.label(class='form-control-label text-muted') }}
+                    {{ form.billing_state(class='form-control form-control-md') }}
+
+                    {{ form.billing_zip.label(class='form-control-label text-muted') }}
+                    {{ form.billing_zip(class='form-control form-control-md') }}
+                </div>
+            </div>
+            <!--primary contact 1-->
+            <div class="container">
+                <h3 class="contractor-form-section-heading">Primary Contact</h3>
+
+                {{ form.p1_contact_first_name.label(class='form-control-label text-muted required-field') }}
+                {% if form.p1_contact_first_name.errors %}
+                {{ form.p1_contact_first_name(class='form-control form-control-md is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.p1_contact_first_name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.p1_contact_first_name(class='form-control form-control-md required-field') }}
+                {% endif %}
+
+                {{ form.p1_contact_last_name.label(class='form-control-label text-muted required-field') }}
+                {% if form.p1_contact_last_name.errors %}
+                {{ form.p1_contact_last_name(class='form-control form-control-md is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.p1_contact_last_name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.p1_contact_last_name(class='form-control form-control-md') }}
+                {% endif %}
+
+                {{ form.p1_contact_title.label(class='form-control-label text-muted') }}
+                {{ form.p1_contact_title(class='form-control form-control-md') }}
+
+                {{ form.p1_email.label(class='form-control-label text-muted required-field') }}
+                {% if form.p1_email.errors %}
+                {{ form.p1_email(class='form-control form-control-md is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.p1_email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.p1_email(class='form-control form-control-md') }}
+                {% endif %}
+
+                {{ form.p1_work_phone.label(class='form-control-label text-muted required-field') }}
+                {% if form.p1_work_phone.errors %}
+                {{ form.p1_work_phone(class='form-control form-control-md is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.p1_work_phone.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.p1_work_phone(class='form-control form-control-md') }}
+                {% endif %}
+
+                {{ form.p1_mobile_phone.label(class='form-control-label text-muted') }}
+                {{ form.p1_mobile_phone(class='form-control form-control-md') }}
+                <div>
+                    {{ form.add_secondary_contact.label(class='form-control-label text-muted') }}
+                    {{ form.add_secondary_contact(class='form-control form-control-md', id='secondary_contact') }}
+                </div>
+            </div>
+
+            <!--primary contact 2-->
+            <div class="container" id="secondary_contact_different">
+                <h3 class="contractor-form-section-heading py-2">Secondary Contact</h3>
+                <div class="form-group">
+                    {{ form.p2_contact_first_name.label(class='form-control-label text-muted') }}
+                    {{ form.p2_contact_first_name(class='form-control form-control-md',
+                    id='secondary_contact_input') }}
+                </div>
+                <div class="form-group">
+                    {{ form.p2_contact_last_name.label(class='form-control-label text-muted') }}
+                    {{ form.p2_contact_last_name(class='form-control form-control-md') }}
+                </div>
+                <div class="form-group">
+                    {{ form.p2_contact_title.label(class='form-control-label text-muted') }}
+                    {{ form.p2_contact_title(class='form-control form-control-md') }}
+                </div>
+                <div class="form-group">
+                    {{ form.p2_email.label(class='form-control-label text-muted') }}
+                    {{ form.p2_email(class='form-control form-control-md') }}
+                </div>
+                <div class="form-group">
+                    {{ form.p2_work_phone.label(class='form-control-label text-muted') }}
+                    {{ form.p2_work_phone(class='form-control form-control-md') }}
+                </div>
+                <div class="form-group">
+                    {{ form.p2_mobile_phone.label(class='form-control-label text-muted') }}
+                    {{ form.p2_mobile_phone(class='form-control form-control-md') }}
+                </div>
+            </div>
+            <!--ar contact-->
+            <div class="container">
+                <h3 class="contractor-form-section-heading py-2">Accounts Receivable Contact</h3>
+                <div class="form-group">
+                    {{ form.ar_contact_first_name.label(class='form-control-label text-muted') }}
+                    {{ form.ar_contact_first_name(class='form-control form-control-md') }}
+
+                    {{ form.ar_contact_last_name.label(class='form-control-label text-muted') }}
+                    {{ form.ar_contact_last_name(class='form-control form-control-md') }}
+
+                    {{ form.ar_contact_title.label(class='form-control-label text-muted') }}
+                    {{ form.ar_contact_title(class='form-control form-control-md') }}
+
+                    {{ form.ar_email.label(class='form-control-label text-muted') }}
+                    {{ form.ar_email(class='form-control form-control-md') }}
+
+                    {{ form.ar_work_phone.label(class='form-control-label text-muted') }}
+                    {{ form.ar_work_phone(class='form-control form-control-md') }}
+
+                    {{ form.ar_mobile_phone.label(class='form-control-label text-muted') }}
+                    {{ form.ar_mobile_phone(class='form-control form-control-md') }}
+                </div>
+            </div>
+            <!--general information-->
+            <div class="container">
+                <h3 class="contractor-form-section-heading py-2">General Information</h3>
+                <div class="form-group">
+                    {{ form.biz_date_started.label(class='form-control-label text-muted') }}
+                    {{ form.biz_date_started(class='form-control form-control-md') }}
+
+                    {{ form.biz_type.label(class='form-control-label text-muted') }}
+                    {{ form.biz_type(class='form-select form-select-md') }}
+
+                    {{ form.biz_contractor_lic.label(class='form-control-label text-muted') }}
+                    {{ form.biz_contractor_lic(class='form-control form-control-md') }}
+
+                    {{ form.biz_ftin.label(class='form-control-label text-muted') }}
+                    {{ form.biz_ftin(class='form-control form-control-md') }}
+
+                    {{ form.biz_affiliate.label(class='form-control-label text-muted') }}
+                    {{ form.biz_affiliate(class='form-select form-select-md', id='biz_affiliate') }}
+                    <div id="biz_affiliate_different">
+                        {{ form.biz_affiliate_company_name.label(class='form-control-label text-muted') }}
+                        {{ form.biz_affiliate_company_name(class='form-control form-control-md',
+                        id='biz_affiliate_company_name_input') }}
+
+                        {{ form.biz_affiliate_address.label(class='form-control-label text-muted') }}
+                        {{ form.biz_affiliate_address(class='form-control form-control-md') }}
+
+                        {{ form.biz_affiliate_street_address_2.label(class='form-control-label text-muted') }}
+                        {{ form.biz_affiliate_street_address_2(class='form-control form-control-md') }}
+
+                        {{ form.biz_affiliate_city.label(class='form-control-label text-muted') }}
+                        {{ form.biz_affiliate_city(class='form-control form-control-md') }}
+
+                        {{ form.biz_affiliate_state.label(class='form-control-label text-muted') }}
+                        {{ form.biz_affiliate_state(class='form-control form-control-md') }}
+
+                        {{ form.biz_affiliate_zip.label(class='form-control-label text-muted') }}
+                        {{ form.biz_affiliate_zip(class='form-control form-control-md') }}
+                    </div>
+
+                    {{ form.biz_installer_cities.label(class='form-control-label text-muted') }}
+                    {{ form.biz_installer_cities(class='form-control form-control-md') }}
+
+                    {{ form.biz_disadvantaged.label(class='form-control-label text-muted') }}
+                    {{ form.biz_disadvantaged(class='form-select form-select-md', id='biz_disadvantaged') }}
+                </div>
+                <div class="form-group" id="biz_disadvantaged_different">
+                    <label class="text-muted">Please choose CERT / Disadvantaged Business type</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_disadvantaged_type_dobe.label(class='form-check-label') }}
+                            {{ form.biz_disadvantaged_type_dobe(class='form-check-input',
+                            id=biz_disadvantaged_type_input) }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_disadvantaged_type_dvbe.label(class='form-check-label') }}
+                            {{ form.biz_disadvantaged_type_dvbe(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_disadvantaged_type_mbe.label(class='form-check-label') }}
+                            {{ form.biz_disadvantaged_type_mbe(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_disadvantaged_type_wbe.label(class='form-check-label') }}
+                            {{ form.biz_disadvantaged_type_wbe(class='form-check-input') }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form.biz_lang.label(class='form-control-label text-muted') }}
+                    {{ form.biz_lang(class='form-control form-control-md') }}
+
+                    {{ form.biz_union.label(class='form-control-label text-muted') }}
+                    {{ form.biz_union(class='form-select form-select-md', id='biz_union') }}
+                    <div id="biz_union_different">
+                        {{ form.biz_union_name.label(class='form-control-label text-muted') }}
+                        {{ form.biz_union_name(class='form-control form-control-md', id='biz_union_input') }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="text-muted">Industries Served</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_industries_served_commercial.label(class='form-check-label') }}
+                            {{ form.biz_industries_served_commercial(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_industries_served_residential.label(class='form-check-label') }}
+                            {{ form.biz_industries_served_residential(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_industries_served_government.label(class='form-check-label') }}
+                            {{ form.biz_industries_served_government(class='form-check-input') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="text-muted">Types of services provided</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_services_data.label(class='form-check-label') }}
+                            {{ form.biz_services_data(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_services_voice.label(class='form-check-label') }}
+                            {{ form.biz_services_voice(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_services_fiber.label(class='form-check-label') }}
+                            {{ form.biz_services_fiber(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_services_security.label(class='form-check-label') }}
+                            {{ form.biz_services_security(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_services_electrical.label(class='form-check-label') }}
+                            {{ form.biz_services_electrical(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_services_wap.label(class='form-check-label') }}
+                            {{ form.biz_services_wap(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_services_it.label(class='form-check-label') }}
+                            {{ form.biz_services_it(class='form-check-input') }}
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_services_pos.label(class='form-check-label') }}
+                            {{ form.biz_services_pos(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_services_iot.label(class='form-check-label') }}
+                            {{ form.biz_services_iot(class='form-check-input') }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form.biz_services_other.label(class='form-control-label text-muted') }}
+                    {{ form.biz_services_other(class='form-control form-control-md') }}
+
+                    {{ form.biz_sub_electric.label(class='form-control-label text-muted') }}
+                    {{ form.biz_sub_electric(class='form-select form-select-md') }}
+                </div>
+                <div class="form-group">
+                    <label class="text-muted">Choose the devices your technicians have installed if applicable</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_routers.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_routers(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_switches.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_switches(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_servers.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_servers(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_pbx.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_pbx(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_pos.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_pos(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_waps.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_waps(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_av.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_av(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_cctv.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_cctv(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_cisco_colab.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_cisco_colab(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_video_conf.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_video_conf(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_server.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_server(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_pc.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_pc(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_netapp.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_netapp(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_vlan.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_vlan(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_gpon.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_gpon(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_ekahau.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_ekahau(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_switch.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_switch(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_tech_installed_docsis.label(class='form-check-label') }}
+                            {{ form.biz_tech_installed_docsis(class='form-check-input') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form.biz_tech_installed_other.label(class='form-control-label text-muted') }}
+                    {{ form.biz_tech_installed_other(class='form-control form-control-md') }}
+
+                    {{ form.biz_tech_laptops.label(class='form-control-label text-muted') }}
+                    {{ form.biz_tech_laptops(class='form-select form-select-md') }}
+
+                    {{ form.biz_tech_surveys.label(class='form-control-label text-muted') }}
+                    {{ form.biz_tech_surveys(class='form-select form-select-md') }}
+
+                    {{ form.biz_tech_on_staff.label(class='form-control-label text-muted') }}
+                    {{ form.biz_tech_on_staff(class='form-select form-select-md') }}
+
+                    {{ form.biz_bicsi_rcdd.label(class='form-control-label text-muted') }}
+                    {{ form.biz_bicsi_rcdd(class='form-control form-control-md') }}
+
+                    {{ form.biz_testing_equipment.label(class='form-control-label text-muted') }}
+                    {{ form.biz_testing_equipment(class='form-control form-control-md') }}
+                </div>
+            </div>
+            <!--rates-->
+            <div class="container">
+                <h3 class="contractor-form-section-heading py-2">Typical Hourly Rates</h3>
+                <div class="form-group">
+                    {{ form.biz_data_voice_fiber_rate.label(class='form-control-label text-muted') }}
+                    {{ form.biz_data_voice_fiber_rate(class='form-control form-control-md') }}
+
+                    {{ form.biz_electrical_rate.label(class='form-control-label text-muted') }}
+                    {{ form.biz_electrical_rate(class='form-control form-control-md') }}
+
+                    {{ form.biz_other.label(class='form-control-label text-muted') }}
+                    {{ form.biz_other(class='form-control form-control-md') }}
+
+                    {{ form.biz_coverage_area.label(class='form-control-label text-muted') }}
+                    {{ form.biz_coverage_area(class='form-control form-control-md') }}
+
+                    {{ form.biz_travel_without_charges.label(class='form-control-label text-muted') }}
+                    {{ form.biz_travel_without_charges(class='form-control form-control-md') }}
+
+                    {{ form.biz_travel_with_negotiations.label(class='form-control-label text-muted') }}
+                    {{ form.biz_travel_with_negotiations(class='form-control form-control-md') }}
+                </div>
+            </div>
+            <!--associations & certifications-->
+            <div class="container">
+                <h3 class="contractor-form-section-heading py-2">Associations & Certifications</h3>
+                <div class="form-group">
+                    <label class="text-muted">What associations are you a member of if applicable?</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_associations_bicsi.label(class='form-check-label') }}
+                            {{ form.biz_associations_bicsi(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_associations_comptia.label(class='form-check-label') }}
+                            {{ form.biz_associations_comptia(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_associations_foa.label(class='form-check-label') }}
+                            {{ form.biz_associations_foa(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_associations_iscet.label(class='form-check-label') }}
+                            {{ form.biz_associations_iscet(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_associations_neca.label(class='form-check-label') }}
+                            {{ form.biz_associations_neca(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_associations_pmi.label(class='form-check-label') }}
+                            {{ form.biz_associations_pmi(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_associations_tpma.label(class='form-check-label') }}
+                            {{ form.biz_associations_tpma(class='form-check-input') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="text-muted">What is your company certified in as far as cabling, connecting, and
+                        terminating hardware?</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_panduit.label(class='form-check-label') }}
+                            {{ form.biz_certifications_panduit(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_homaco.label(class='form-check-label') }}
+                            {{ form.biz_certifications_homaco(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_berk.label(class='form-check-label') }}
+                            {{ form.biz_certifications_berk(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_amp.label(class='form-check-label') }}
+                            {{ form.biz_certifications_amp(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_chatsworth.label(class='form-check-label') }}
+                            {{ form.biz_certifications_chatsworth(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_mowhawk.label(class='form-check-label') }}
+                            {{ form.biz_certifications_mowhawk(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_siemon.label(class='form-check-label') }}
+                            {{ form.biz_certifications_siemon(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_avaya.label(class='form-check-label') }}
+                            {{ form.biz_certifications_avaya(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_comm.label(class='form-check-label') }}
+                            {{ form.biz_certifications_comm(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_ortronics.label(class='form-check-label') }}
+                            {{ form.biz_certifications_ortronics(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_corning.label(class='form-check-label') }}
+                            {{ form.biz_certifications_corning(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_belden.label(class='form-check-label') }}
+                            {{ form.biz_certifications_belden(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_leviton.label(class='form-check-label') }}
+                            {{ form.biz_certifications_leviton(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_great.label(class='form-check-label') }}
+                            {{ form.biz_certifications_great(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_hoffman.label(class='form-check-label') }}
+                            {{ form.biz_certifications_hoffman(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_hubbell.label(class='form-check-label') }}
+                            {{ form.biz_certifications_hubbell(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_mod.label(class='form-check-label') }}
+                            {{ form.biz_certifications_mod(class='form-check-input') }}
+                        </div>
+                        <div class="form-check form-check-inline">
+                            {{ form.biz_certifications_superior.label(class='form-check-label') }}
+                            {{ form.biz_certifications_superior(class='form-check-input') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--reference 1-->
+            <div class="container">
+                <h3 class="contractor-form-section-heading py-2">References</h3>
+                <div class="form-group">
+                    {{ form.ref_1_company_name.label(class='form-control-label text-muted') }}
+                    {{ form.ref_1_company_name(class='form-control form-control-md') }}
+
+                    {{ form.ref_1_desc.label(class='form-control-label text-muted') }}
+                    {{ form.ref_1_desc(class='form-control form-control-md') }}
+
+                    {{ form.ref_1_first_name.label(class='form-control-label text-muted') }}
+                    {{ form.ref_1_first_name(class='form-control form-control-md') }}
+
+                    {{ form.ref_1_last_name.label(class='form-control-label text-muted') }}
+                    {{ form.ref_1_last_name(class='form-control form-control-md') }}
+
+                    {{ form.ref_1_phone.label(class='form-control-label text-muted') }}
+                    {{ form.ref_1_phone(class='form-control form-control-md') }}
+
+                    {{ form.ref_1_email.label(class='form-control-label text-muted') }}
+                    {{ form.ref_1_email(class='form-control form-control-md') }}
+
+                    {{ form.ref_1_contact.label(class='form-control-label text-muted') }}
+                    {{ form.ref_1_contact(class='form-select form-select-md') }}
+
+                    {{ form.ref_additional.label(class='form-control-label text-muted') }}
+                    {{ form.ref_additional(class='form-select form-select-md') }}
+
+                </div>
+            </div>
+            <div class="container" id="ref_different">
+                <!--reference 2-->
+                <div class="form-group">
+                    {{ form.ref_2_company_name.label(class='form-control-label text-muted') }}
+                    {{ form.ref_2_company_name(class='form-control form-control-md', id='ref_2_company_name_input') }}
+
+                    {{ form.ref_2_desc.label(class='form-control-label text-muted') }}
+                    {{ form.ref_2_desc(class='form-control form-control-md') }}
+
+                    {{ form.ref_2_first_name.label(class='form-control-label text-muted') }}
+                    {{ form.ref_2_first_name(class='form-control form-control-md') }}
+
+                    {{ form.ref_2_last_name.label(class='form-control-label text-muted') }}
+                    {{ form.ref_2_last_name(class='form-control form-control-md') }}
+
+                    {{ form.ref_2_phone.label(class='form-control-label text-muted') }}
+                    {{ form.ref_2_phone(class='form-control form-control-md') }}
+
+                    {{ form.ref_2_email.label(class='form-control-label text-muted') }}
+                    {{ form.ref_2_email(class='form-control form-control-md') }}
+
+                    {{ form.ref_2_contact.label(class='form-control-label text-muted') }}
+                    {{ form.ref_2_contact(class='form-select form-select-md') }}
+                </div>
+            </div>
+            <div class="container">
+                <!--insurance-->
+                <h3 class="contractor-form-section-heading py-2">Insurance</h3>
+                <div class="form-group">
+                    {{ form.biz_insurance.label(class='form-control-label text-muted') }}
+                    {{ form.biz_insurance(class='form-select form-select-md') }}
+
+                    {{ form.biz_limits.label(class='form-control-label text-muted') }}
+                    {{ form.biz_limits(class='form-control form-control-md') }}
+
+                    {{ form.biz_aggregate.label(class='form-control-label text-muted') }}
+                    {{ form.biz_aggregate(class='form-control form-control-md') }}
+
+                    {{ form.biz_workers_comp.label(class='form-control-label text-muted') }}
+                    {{ form.biz_workers_comp(class='form-select form-select-md') }}
+
+                    {{ form.biz_limits_accident.label(class='form-control-label text-muted') }}
+                    {{ form.biz_limits_accident(class='form-control form-control-md') }}
+
+                    {{ form.biz_disease.label(class='form-control-label text-muted') }}
+                    {{ form.biz_disease(class='form-control form-control-md') }}
+
+                    {{ form.biz_disease_each_employee.label(class='form-control-label text-muted') }}
+                    {{ form.biz_disease_each_employee(class='form-control form-control-md') }}
+                </div>
+                <!--submit-->
+                {{ form.submit(class='my-3 btn btn-success') }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content%}
